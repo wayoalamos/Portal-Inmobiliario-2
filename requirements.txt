@@ -1,0 +1,7 @@
+Flask
+gunicorn
+requests
+bs4
+openpyxl
+flask_excel
+rq
