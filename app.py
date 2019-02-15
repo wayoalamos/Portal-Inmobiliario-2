@@ -26,7 +26,8 @@ def getPlotCSV():
     print("post method")
     text = request.form['text'] # url from webpage
     url = str(text)
-    return 12
+    return "respuesta"
+
     """
     q = Queue(connection=conn)
     first_job = q.enqueue(count_words_at_url, url)
