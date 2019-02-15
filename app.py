@@ -26,9 +26,7 @@ def getPlotCSV():
     print("post method")
     text = request.form['text'] # url from webpage
     url = str(text)
-    return "respuesta"
 
-    """
     q = Queue(connection=conn)
     first_job = q.enqueue(count_words_at_url, url)
     result = first_job.result
@@ -36,8 +34,8 @@ def getPlotCSV():
         result = first_job.result
 
     print("miiii resultado:", result)
-    """
 
+    return str(result)
     """
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
