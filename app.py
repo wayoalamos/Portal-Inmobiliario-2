@@ -23,7 +23,7 @@ def homepage():
 
 @app.route("/", methods=["POST"])
 def getPlotCSV():
-    print("1111111")
+    print("post method")
     text = request.form['text'] # url from webpage
     url = str(text)
 
@@ -35,12 +35,13 @@ def getPlotCSV():
 
     print("miiii resultado:", result)
 
+    """
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
-
-    return output
+    """
+    return result
 
 if __name__ == '__main__':
     excel.init_excel(app)
