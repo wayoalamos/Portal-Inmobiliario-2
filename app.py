@@ -28,12 +28,10 @@ def getPlotCSV():
     url = str(text)
 
     q = Queue(connection=conn)
-    first_job = q.enqueue(count_words_at_url, url)
-    result = first_job.result
-    """
-    while not result:
-        result = first_job.result
-"""
+    task = q.enqueue(count_words_at_url, url)
+    result = task.result
+    print("TASK: ", task)
+    print("TASK ID", task.get_id())
     print("miiii resultado:", result)
 
     return str(result)
