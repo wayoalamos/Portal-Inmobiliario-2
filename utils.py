@@ -16,9 +16,9 @@ def count_words_at_url(url):
     response_object = {
         'status': 'success',
         'data': {
-            'task_id': task.get_id()
+            'task_id': task.get_id(),
             'result': a
-        },
+        }
     }
 
     """
