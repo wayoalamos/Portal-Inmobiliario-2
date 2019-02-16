@@ -28,6 +28,6 @@ def count_words_at_url(url):
     print("ttterminando la funcion")
     return s.workbook
     """
-    time.sleep(3)
+    time.sleep(32)
     print("time done con exito ")
     return a
