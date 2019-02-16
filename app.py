@@ -6,6 +6,7 @@ import openpyxl
 import pyexcel
 
 from rq import Queue
+from rq.job import Job
 
 from worker import conn
 from search import Search
@@ -48,6 +49,8 @@ def getPlotCSV():
 
 @app.route("/waiting/<task_id>")
 def waiting(task_id):
+    job = Job.fetch(task_id, connection=conn)
+    print("my job", job)
     print("in waiting")
     print (task_id)
     for i in range(10):
