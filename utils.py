@@ -14,7 +14,6 @@ def count_words_at_url(url):
     print("dddentro de la funcion count words return largo del url")
     a = len(url)
 
-
     """
     s = Search() # create search element
     s.workbook = Workbook() # create workbook element
@@ -31,8 +30,8 @@ def count_words_at_url(url):
     return s.workbook
     """
     count = 0
-    for i in range(10):
-        print("jsjjs", i)
+    for i in range(5):
+        print("workerk working xD", i)
         time.sleep(i)
 
     print("time done con exito ")

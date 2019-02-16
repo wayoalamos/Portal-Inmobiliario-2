@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, render_template, make_response
+from flask import Flask, Response, request, render_template, make_response, redirect
 import flask_excel as excel
 from search import Search
 from openpyxl import Workbook
@@ -35,15 +35,22 @@ def getPlotCSV():
     print("TASK ID", task.get_id())
     print("miiii resultado:", result)
 
-    return str(result)
-    
+    return redirect('/waiting')
     """
+    return str(result)
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
     return result
     """
+
+@app.route("/waiting")
+def waiting():
+    for i in range(10):
+        print (i)
+        time.sleep(1)
+    return redirect('/')
 
 if __name__ == '__main__':
     excel.init_excel(app)
