@@ -19,6 +19,12 @@ counter = 0
 
 @app.route('/')
 def homepage():
+    counter = 0
+    while True:
+        print("yess!", counter)
+        counter += 1
+        time.sleep(1)
+        
     return render_template('index.html', data=counter)
 
 @app.route("/", methods=["POST"])
@@ -29,10 +35,7 @@ def getPlotCSV():
 
     q = Queue(connection=conn)
     task = q.enqueue(count_words_at_url, url)
-    task = q.enqueue(count_words_at_url, url)
-    task = q.enqueue(count_words_at_url, url)
-    task = q.enqueue(count_words_at_url, url)
-    
+
     result = task.result
     print("TASK: ", task)
     print("TASK ID", task.get_id())
