@@ -27,7 +27,7 @@ def getPlotCSV():
     print("post fue presionado")
     text = request.form['text'] # url from webpage
     url = str(text)
-    
+
     q = Queue(connection=conn)
     task = q.enqueue(count_words_at_url, url)
     task_id = task.get_id()
@@ -46,12 +46,12 @@ def waiting(task_id):
         time.sleep(1)
 
 
-    """output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
+    output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    """
-    return "output"
-    # return job.result
+
+
+    return output
 
 if __name__ == '__main__':
     excel.init_excel(app)
