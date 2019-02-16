@@ -53,7 +53,12 @@ def waiting(task_id):
             print("la solicitud se ha demorado mas de 25 segundos, se redirege a la url waiting!!!!!!!!!!!!")
             return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
-    return job.result
+
+    output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
+    output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
+    output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    return output
+    # return job.result
 
 if __name__ == '__main__':
     excel.init_excel(app)
