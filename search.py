@@ -175,15 +175,6 @@ class Search:
                 # change url adding one to the page
                 url = url[:url.rfind("=")+1] + page_number
 
-                """
-                PARA QUE NO SE CAIGA A LOS 28 seg
-
-                if time.time() - start_time > 28:
-                    print("no more!!")
-                    self.status = 0
-                    self.last_url = url
-                    return"""
-
 
     def clean_string(self, string):
         # decode and encode depending on the string
@@ -270,7 +261,7 @@ class Search:
         Returns True if the response seems to be HTML, False otherwise.
         """
         content_type = resp.headers['Content-Type'].lower()
-        print("content type: ", content_type)
+        # print("content type: ", content_type)
         return (resp.status_code == 200
                 and content_type is not None
                 and content_type.find('html') > -1)

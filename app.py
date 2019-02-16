@@ -17,7 +17,6 @@ import time
 app = Flask(__name__)
 
 counter = 0
-q = Queue(connection=conn)
 
 @app.route('/')
 def homepage():
@@ -29,6 +28,8 @@ def getPlotCSV():
     text = request.form['text'] # url from webpage
     url = str(text)
 
+    q = Queue(connection=conn)
+    q.empty()
     task = q.enqueue(count_words_at_url, url)
     task_id = task.get_id()
 
@@ -44,11 +45,11 @@ def waiting(task_id):
             print("la solicitud se ha demorado mas de 25 segundos, se redirege a la url waiting!!!!!!!!!!!!")
             return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
-        
+
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    return output
+    return "output"
     # return job.result
 
 if __name__ == '__main__':
