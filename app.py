@@ -31,11 +31,8 @@ def getPlotCSV():
     q = Queue(connection=conn)
     task = q.enqueue(count_words_at_url, url)
 
-    result = task.result
+    #result = task.result
     task_id = task.get_id()
-    print("TASK: ", task)
-    print("TASK ID", task_id)
-    print("miiii resultado:", result)
 
     return redirect(url_for('waiting', task_id=task_id))
     """
@@ -50,13 +47,13 @@ def getPlotCSV():
 @app.route("/waiting/<task_id>")
 def waiting(task_id):
     job = Job.fetch(task_id, connection=conn)
-    print("my job", job)
-    print("in waiting")
-    print (task_id)
-    for i in range(12):
-        print("esperando que termine el worker", i, job.is_finished)
+    start_time = time.time()
+    while not job.is_finished:
+        if time.time() - start_time > 25:
+            print("la solicitud se ha demorado mas de 25 segundos, se redirege a la url waiting!!!!!!!!!!!!")
+            return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
-    return redirect('/')
+    return job.result
 
 if __name__ == '__main__':
     excel.init_excel(app)
