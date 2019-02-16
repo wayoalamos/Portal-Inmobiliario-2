@@ -49,7 +49,7 @@ def waiting(task_id):
     job = Job.fetch(task_id, connection=conn)
     start_time = time.time()
     while not job.is_finished:
-        if time.time() - start_time > 25:
+        if time.time() - start_time > 5:
             print("la solicitud se ha demorado mas de 25 segundos, se redirege a la url waiting!!!!!!!!!!!!")
             return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
