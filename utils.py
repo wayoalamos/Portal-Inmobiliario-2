@@ -30,7 +30,7 @@ def count_words_at_url(url):
     return s.workbook
     """
     count = 0
-    for i in range(5):
+    for i in range(4):
         print("workerk working xD", i)
         time.sleep(i)
 

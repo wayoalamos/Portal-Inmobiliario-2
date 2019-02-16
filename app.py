@@ -53,8 +53,8 @@ def waiting(task_id):
     print("my job", job)
     print("in waiting")
     print (task_id)
-    for i in range(10):
-        print(i)
+    for i in range(12):
+        print("esperando que termine el worker", i, job.is_finished)
         time.sleep(1)
     return redirect('/')
 
