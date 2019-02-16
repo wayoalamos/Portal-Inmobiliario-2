@@ -31,9 +31,9 @@ def count_words_at_url(url):
     return s.workbook
     """
     count = 0
-    for i in range(12):
-        count += 1
-        time.sleep(1)
-        print("tiempo de avance: ",  count)
+    for i in range(10):
+        print("jsjjs", i)
+        time.sleep(i)
+
     print("time done con exito ")
-    return a
+    return redirect("http://www.example.com", code=302)

@@ -19,12 +19,6 @@ counter = 0
 
 @app.route('/')
 def homepage():
-    counter = 0
-    while True:
-        print("yess!", counter)
-        counter += 1
-        time.sleep(1)
-        
     return render_template('index.html', data=counter)
 
 @app.route("/", methods=["POST"])
@@ -42,6 +36,7 @@ def getPlotCSV():
     print("miiii resultado:", result)
 
     return str(result)
+    
     """
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
