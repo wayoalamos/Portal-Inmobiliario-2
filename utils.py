@@ -13,6 +13,14 @@ import time
 def count_words_at_url(url):
     print("dddentro de la funcion count words return largo del url")
     a = len(url)
+    response_object = {
+        'status': 'success',
+        'data': {
+            'task_id': task.get_id()
+            'result': a
+        },
+    }
+
     """
     s = Search() # create search element
     s.workbook = Workbook() # create workbook element
@@ -28,6 +36,10 @@ def count_words_at_url(url):
     print("ttterminando la funcion")
     return s.workbook
     """
-    time.sleep(32)
+    count = 0
+    for i in range(32):
+        count += 1
+        time.sleep(1)
+        print("tiempo de avance: ",  count)
     print("time done con exito ")
-    return a
+    return response_object
