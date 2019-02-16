@@ -17,6 +17,7 @@ import time
 app = Flask(__name__)
 
 counter = 0
+q = Queue(connection=conn)
 
 @app.route('/')
 def homepage():
@@ -24,36 +25,26 @@ def homepage():
 
 @app.route("/", methods=["POST"])
 def getPlotCSV():
-    print("post method")
+    print("post fue presionado")
     text = request.form['text'] # url from webpage
     url = str(text)
 
-    q = Queue(connection=conn)
     task = q.enqueue(count_words_at_url, url)
-
-    #result = task.result
     task_id = task.get_id()
 
     return redirect(url_for('waiting', task_id=task_id))
-    """
-    return str(result)
-    output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
-    output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
-    output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-
-    return result
-    """
 
 @app.route("/waiting/<task_id>")
 def waiting(task_id):
     job = Job.fetch(task_id, connection=conn)
     start_time = time.time()
     while not job.is_finished:
+        print("esperando a que la solicitud sea terminada")
         if time.time() - start_time > 25:
             print("la solicitud se ha demorado mas de 25 segundos, se redirege a la url waiting!!!!!!!!!!!!")
             return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
-
+        
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
