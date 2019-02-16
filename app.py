@@ -31,11 +31,12 @@ def getPlotCSV():
     task = q.enqueue(count_words_at_url, url)
 
     result = task.result
+    task_id = task.get_id()
     print("TASK: ", task)
-    print("TASK ID", task.get_id())
+    print("TASK ID", task_id)
     print("miiii resultado:", result)
 
-    return redirect('/waiting')
+    return redirect(url_for('waiting', task_id=task_id))
     """
     return str(result)
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
@@ -45,10 +46,12 @@ def getPlotCSV():
     return result
     """
 
-@app.route("/waiting")
-def waiting():
+@app.route("/waiting/<task_id>")
+def waiting(task_id):
+    print("in waiting")
+    print (task_id)
     for i in range(10):
-        print (i)
+        print(i)
         time.sleep(1)
     return redirect('/')
 
