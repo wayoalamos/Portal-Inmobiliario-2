@@ -35,4 +35,4 @@ def count_words_at_url(url):
         time.sleep(i)
 
     print("time done con exito ")
-    return redirect("http://www.example.com", code=302)
+    return a
