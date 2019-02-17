@@ -22,5 +22,6 @@ def count_words_at_url(url):
 
     # aca esta el problema
     s.find_products(url) # find products of the urls
-    print("ttterminando la funcion")
+    print("ttterminando la funcion del worker")
+    print("el resultado a retornar es: ", s.workbook)
     return s.workbook

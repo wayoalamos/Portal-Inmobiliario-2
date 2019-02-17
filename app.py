@@ -45,11 +45,11 @@ def waiting(task_id):
             return redirect(url_for('waiting', task_id=task_id))
         time.sleep(1)
 
-
+    print("generando el output en el excel")
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(job.result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-
+    print("excel esta listo para ser retornado suerte")
 
     return output
 
