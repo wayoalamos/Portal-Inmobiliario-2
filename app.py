@@ -43,6 +43,7 @@ def waiting(task_id):
     result = job.result
     my_workbook = Workbook()
     my_workbook_active = my_workbook.active
+    print(result)
     return "str(result)"
 
     """
