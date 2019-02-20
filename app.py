@@ -56,7 +56,7 @@ def waiting(task_id):
     print("excel esta listo para ser retornado suerte")
     """
 
-    return str(result[0][0])
+    return result
 
 if __name__ == '__main__':
     excel.init_excel(app)

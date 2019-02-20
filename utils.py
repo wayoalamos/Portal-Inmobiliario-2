@@ -13,7 +13,7 @@ import time
 def count_words_at_url(url):
     s = Search() # create search element
     #s.workbook = Workbook() # create workbook element
-    my_workbook = workbook()
+    my_workbook = Workbook()
 
     #s.workbook_active = s.workbook.active
     my_workbook_active = my_workbook.active
