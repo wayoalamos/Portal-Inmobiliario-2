@@ -149,7 +149,7 @@ class Search:
         self.workbook_active = None
         self.status = 1 # 0 if it was uncomplete request
         self.last_url = None
-        self.data = [[999 for i in range (1999) for j in range(199)]
+        self.data = [[1]]
 
     def find_products(self, url):
         # has_items: if the website has product_item or not
