@@ -47,12 +47,13 @@ def waiting(task_id):
 
     print("generando el output en el excel")
     result = job.result
+    """
     output = make_response(openpyxl.writer.excel.save_virtual_workbook(result))
     output.headers["Content-Disposition"] = "attachment; filename=Datos.xlsx"
     output.headers["Content-type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     print("excel esta listo para ser retornado suerte")
-
-    return output
+    """
+    return str(result[0][0])
 
 if __name__ == '__main__':
     excel.init_excel(app)
