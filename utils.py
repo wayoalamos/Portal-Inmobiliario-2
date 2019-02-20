@@ -7,8 +7,8 @@ def count_words_at_url(url):
     for i in s.data:
         l = ""
         for j in i:
-            l += j + "°x^"
+            l += str(j) + "°x^"
         l.rstrip("°x[^")
-        t += l + "~w{"
+        t += str(l) + "~w{"
     t.rstrip("~w{")
     return t
