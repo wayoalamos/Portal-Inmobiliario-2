@@ -43,10 +43,6 @@ def waiting(task_id):
     result = job.result
     my_workbook = Workbook()
     my_workbook_active = my_workbook.active
-    print(result)
-    return "str(result)"
-
-    """
 
     # excel headers
     header=["Tipo", "Categoria", "Ubicacion", "Codigo", "Informacion",
@@ -63,7 +59,6 @@ def waiting(task_id):
 
 
     return output
-    """
 
 if __name__ == '__main__':
     excel.init_excel(app)
