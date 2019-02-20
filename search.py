@@ -149,7 +149,6 @@ class Search:
         self.workbook_active = None
         self.status = 1 # 0 if it was uncomplete request
         self.last_url = None
-        self.data = [[1]]
 
     def find_products(self, url):
         # has_items: if the website has product_item or not
@@ -279,9 +278,10 @@ class Search:
 
     def write_file(self, item):
         if self.mode == 0:
-            self.writer.writerow(item.list_of_attr())
+            # self.writer.writerow(item.list_of_attr())
         if self.mode == 1:
-            self.workbook_active.append(item.list_of_attr())
+            self.data.append(item.list_of_attr())
+            # self.workbook_active.append(item.list_of_attr())
         else:
             if self.data == []:
                 self.data = ""
