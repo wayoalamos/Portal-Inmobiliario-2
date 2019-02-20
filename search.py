@@ -277,7 +277,6 @@ class Search:
                 return css_class
 
     def write_file(self, item):
-        if self.mode == 0:
             # self.writer.writerow(item.list_of_attr())
         if self.mode == 1:
             self.data.append(item.list_of_attr())
